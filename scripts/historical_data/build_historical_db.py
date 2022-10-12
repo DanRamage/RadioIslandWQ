@@ -4,6 +4,7 @@ sys.path.append("../../commonfiles/python")
 from datetime import datetime, timedelta
 from numpy import isnan
 from noaa_coops import Station
+from multiprocessing import Queue
 
 from SQLiteMultiProcDataSaver import SQLiteMPDataSaver
 from xeniaSQLiteAlchemy import xeniaAlchemy as sl_xeniaAlchemy, multi_obs as sl_multi_obs, platform as sl_platform
@@ -25,7 +26,8 @@ class build_database:
         self._platforms_config = platforms_config
         self._row_entry_date = datetime.now()
         self._obs_map = json_obs_map()
-        self._record_saver = SQLiteMPDataSaver(self._historic_db_filename, data_saver_log_configfile)
+        self._data_queue = Queue()
+        self._record_saver = SQLiteMPDataSaver(self._historic_db_filename, data_saver_log_configfile, self._data_queue)
 
         return
     def initialize(self):
@@ -103,7 +105,7 @@ class build_database:
                                                  m_date=index.strftime("%Y-%m-%d %H:%M:%S"),
                                                  m_value=m_value
                                                  )
-                            self._record_saver.data_queue.put(m_obs)
+                            self._data_queue.put(m_obs)
                             if obs.source_obs == 'wind':
                                 wind_dir_obs = self._obs_map.get_rec_from_xenia_name('wind_from_direction')
                                 m_value = obs_df[wind_direction_name][index]
@@ -116,7 +118,7 @@ class build_database:
                                                      m_date=index.strftime("%Y-%m-%d %H:%M:%S"),
                                                      m_value=m_value
                                                      )
-                                self._record_saver.data_queue.put(m_obs)
+                                self._data_queue.put(m_obs)
 
 
                 except Exception as e:

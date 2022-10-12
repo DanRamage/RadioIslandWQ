@@ -11,9 +11,6 @@ from wq_sites import wq_sample_sites
 from nc_bacteria_data import get_entero_dates
 from build_historical_db import build_database
 
-import multiprocessing
-multiprocessing.set_start_method('fork')
-
 def main():
     parser = optparse.OptionParser()
     parser.add_option("--ConfigFile", dest="config_file",
