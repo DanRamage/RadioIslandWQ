@@ -3,15 +3,16 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append("../../commonfiles/python")
 import logging.config
 
-from datetime import datetime, timedelta
 import optparse
 import configparser
 import json
-from noaa_coops import Station
 from wq_sites import wq_sample_sites
 
 from nc_bacteria_data import get_entero_dates
 from build_historical_db import build_database
+
+import multiprocessing
+multiprocessing.set_start_method('fork')
 
 def main():
     parser = optparse.OptionParser()
