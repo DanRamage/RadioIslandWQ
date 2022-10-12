@@ -67,11 +67,14 @@ class build_database:
         station_obj = Station(station)
         for obs in self._obs_map:
             if len(obs.source_obs):
-                logger.info("Query data for platform: {platform} product: {obs} Start Date: {start_date} End Date: {end_date}".format(platform=xenia_platform,
-                                                                                        obs=obs.source_obs,
-                                                                                        start_date=begin_date.strftime("%Y%m%d"),
-                                                                                        end_date=end_date.strftime("%Y%m%d")))
                 try:
+                    logger.info(
+                        "Query data for platform: {platform} product: {obs}({obs_id}) Start Date: {start_date} End Date: {end_date}".format(
+                            platform=xenia_platform,
+                            obs=obs.source_obs,
+                            obs_id=obs.sensor_id,
+                            start_date=begin_date.strftime("%Y%m%d"),
+                            end_date=end_date.strftime("%Y%m%d")))
                     obs_df = station_obj.get_data(begin_date=begin_date.strftime("%Y%m%d"),
                                          end_date=end_date.strftime("%Y%m%d"),
                                          product=obs.source_obs,
