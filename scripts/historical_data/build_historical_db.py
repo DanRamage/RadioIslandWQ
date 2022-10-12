@@ -72,7 +72,8 @@ class build_database:
                     try:
                         if self._data_queue.qsize() > 500:
                             logger.info("Waiting for queue size to shrink.")
-                            time.sleep(5)
+                            while self._data_queue.qsize() > 500:
+                                time.sleep(0)
 
                     # We get this exception under OSX.
                     except NotImplementedError:
