@@ -32,7 +32,7 @@
           "target_uom": "celsius"
         },
         {
-          "target_obs": "sea_water_temperature",
+          "target_obs": "water_temperature",
           "header_column": "water_temperature",
           "s_order": 1,
           "source_uom": "celsius",
