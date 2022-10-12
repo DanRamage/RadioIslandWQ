@@ -1,0 +1,44 @@
+{
+  "C57": {
+    "nos.8656483.met": {
+      "previous_hours": 192,
+      "observations": [
+        {
+          "target_obs": "wind_speed",
+          "header_column": "wind",
+          "s_order": 1,
+          "source_uom": "m_s-1",
+          "target_uom": "m_s-1"
+        },
+        {
+          "target_obs": "wind_from_direction",
+          "header_column": "",
+          "s_order": 1,
+          "source_uom": "degrees_true",
+          "target_uom": "degrees_true"
+        },
+        {
+          "target_obs": "air_pressure",
+          "header_column": "air_pressure",
+          "s_order": 1,
+          "source_uom": "mb",
+          "target_uom": "mb"
+        },
+        {
+          "target_obs": "air_temperature",
+          "header_column": "air_temperature",
+          "s_order": 1,
+          "source_uom": "celsius",
+          "target_uom": "celsius"
+        },
+        {
+          "target_obs": "sea_water_temperature",
+          "header_column": "water_temperature",
+          "s_order": 1,
+          "source_uom": "celsius",
+          "target_uom": "celsius"
+        }
+      ]
+    }
+  }
+}
