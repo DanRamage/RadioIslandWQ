@@ -2,6 +2,7 @@ import os, sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append("../../commonfiles/python")
 from datetime import datetime, timedelta
+import time
 from numpy import isnan
 from noaa_coops import Station
 from multiprocessing import Queue
@@ -68,6 +69,15 @@ class build_database:
         for obs in self._obs_map:
             if len(obs.source_obs):
                 try:
+                    try:
+                        while self._data_queue.qsize() > 500:
+                            logger.info("Waiting for queue size to shrink.")
+                            time.sleep(10)
+
+                    # We get this exception under OSX.
+                    except NotImplementedError:
+                        pass
+
                     logger.info(
                         "Query data for platform: {platform} product: {obs}({obs_id}) Start Date: {start_date} End Date: {end_date}".format(
                             platform=xenia_platform,
