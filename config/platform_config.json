@@ -1,7 +1,7 @@
 {
   "C57": {
     "nos.8656483.met": {
-      "previous_hours": 192,
+      "previous_hours": 72,
       "observations": [
         {
           "target_obs": "wind_speed",
