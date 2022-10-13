@@ -44,7 +44,11 @@ class build_database:
                 self.setup_platform(platform_cfg, platform['observations'])
                 if data_provider == 'nos':
                     start_date = begin_date - timedelta(hours=platform["previous_hours"])
-                    end_date = begin_date
+                    #Since only the Year Month and Day are used in the COOPS query, we want to add 1 day
+                    #to our end date so we will get the data that overlaps with our sample date and time.
+                    #Otherwise if the sample occured at: 2022-01-01 05:00:00 we'd only retrieve data up to
+                    #2022-01-01 00:00:00
+                    end_date = begin_date + timedelta(days=1)
                     self.get_noaa_data(platform_cfg, platform_id, start_date, end_date)
 
         except Exception as e:
