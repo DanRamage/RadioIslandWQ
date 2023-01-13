@@ -1,0 +1,18 @@
+[Core]
+Name = WQ JSON File Plugin
+Module = json_output_plugin
+
+[Documentation]
+Author = Dan Ramage
+Version = 0.1
+Website = http://howsthebeach.org
+Description = Folly Beach specific water quality processing.
+
+[Settings]
+json_outfile=/mnt/wq_feeds/northcarolina/radioisland/Predictions.json
+logging=/home/xeniaprod/scripts/FollyBeach-WaterQuality/config/logconf/json_output.conf
+
+[charleston_sites]
+overlap_sites=Folly Beach
+folly_names=Folly River CHS Water Keeper
+predictions_file=/mnt/wq_feeds/charleston/Predictions.json
