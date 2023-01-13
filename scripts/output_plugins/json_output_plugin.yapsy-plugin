@@ -10,4 +10,4 @@ Description = RadioIsland specific water quality processing.
 
 [Settings]
 json_outfile=/mnt/wq_feeds/northcarolina/radioisland/Predictions.json
-logging=/home/xeniaprod/scripts/FollyBeach-WaterQuality/config/logconf/json_output.conf
+logging=/home/xeniaprod/scripts/RadioIslandWQ/config/logconf/json_output.conf
