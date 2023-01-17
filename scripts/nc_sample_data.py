@@ -43,9 +43,15 @@ class nc_wq_sample_data(wq_sample_data):
   @property
   def entero_ssm_cfu(self):
     return self._entero_ssm_cfu
+
   @entero_ssm_cfu.setter
   def entero_ssm_cfu(self, value):
     self._entero_ssm_cfu = value
 
+  @property
+  def value(self):
+    return self._value
 
-
+  @value.setter
+  def value(self, value):
+    self._value = value

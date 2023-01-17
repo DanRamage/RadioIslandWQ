@@ -6,7 +6,6 @@ import xlrd
 from datetime import datetime
 from pytz import timezone
 from nc_sample_data import nc_wq_sample_data
-from wq_output_results import wq_sample_data, wq_samples_collection, wq_advisories_file, wq_station_advisories_file
 
 logger = logging.getLogger()
 
@@ -75,7 +74,8 @@ def parse_excel_data(file, monitoring_sites, wq_data_collection):
                         if site_id == site_nfo.name:
                             logger.info("Processing row: {} Site: {} Name: {}".format(row_ndx, site_id, station_name))
                             matched = True
-                            station_name = site_nfo.description
+                            station_name = site_id
+                            # station_name = site_nfo.description
                             current_excel_station = station_name
                             current_site_station_ndx = ndx
                 else:
@@ -86,8 +86,8 @@ def parse_excel_data(file, monitoring_sites, wq_data_collection):
                 if matched:
                     try:
                         wq_sample_rec = nc_wq_sample_data()
-                        wq_sample_rec.station = site_nfo.description
-                        wq_sample_rec.site_id = site_nfo.name
+                        wq_sample_rec.site_id = site_nfo.description
+                        wq_sample_rec.station = site_nfo.name
                         try:
                             date_val = xlrd.xldate.xldate_as_datetime(data_row[date_ndx].value, wb.datemode)
                         except Exception as e:
@@ -98,7 +98,10 @@ def parse_excel_data(file, monitoring_sites, wq_data_collection):
                         wq_sample_rec.entero_ssm = data_row[entero_ssm_ndx].value
                         wq_sample_rec.entero_gm2 = data_row[entero_gm2_ndx].value
                         wq_sample_rec.entero_ssm_cfu = data_row[entero_ssm_cfu_ndx].value
-                        wq_sample_rec.value = wq_sample_rec.entero_ssm
+                        if len(wq_sample_rec.entero_ssm):
+                            wq_sample_rec.value = wq_sample_rec.entero_ssm
+                        else:
+                            wq_sample_rec.value = wq_sample_rec.entero_ssm_cfu
                         logger.info("Site: %s Date: %s SSM: %s GM: %s" % (wq_sample_rec.station,
                                                                           wq_sample_rec.date_time,
                                                                           wq_sample_rec.entero_ssm,
