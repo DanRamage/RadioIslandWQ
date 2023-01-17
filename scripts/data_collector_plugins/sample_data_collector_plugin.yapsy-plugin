@@ -1,0 +1,22 @@
+[Core]
+Name = Sample Data Collector Plugin
+Module = sample_data_collector_plugin
+
+[Documentation]
+Author = Dan Ramage
+Version = 0.1
+Website = http://howsthebeach.org
+Description = RadioIsland specific sample data processing.
+
+[Settings]
+Enabled=True
+ini_file=/home/xeniaprod/scripts/RadioIslandWQ/config/radioisland_prediction_engine.ini
+log_config=/home/xeniaprod/scripts/RadioIslandWQ/config/logconf/nc_sample_data_collector.conf
+
+[source_data]
+url=https://reports.ncdenr.org/BOE/OpenDocument/opendoc/CrystalReports/viewrpt.cwr?id=9491&apsuser=REC_U&apspassword=mf_pr0_b0&apsauthtype=secEnterprise&cmd=export&export_fmt=U2FXLS:4&prompt0=Date({start_year},1,1)&prompt1=Date({end_year},12,31)&prompt2=*&prompt3=*&prompt4=*&prompt5=Public
+download_directory=/home/xeniaprod/tmp/radioisland/sample_data
+
+[output]
+advisory_directory=/mnt/wq_feeds/northcarolina/radioisland/monitorstations
+jsonfile=/mnt/wq_feeds/northcarolina/radioisland/monitorstations/beachAdvisoryResults.json
