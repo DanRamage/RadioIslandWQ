@@ -10,8 +10,8 @@ Description = RadioIsland specific water quality processing.
 
 [Settings]
 enabled=True
-logging=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/logconf/nc_historical_email_output.conf
-passworded_settings=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/password_options.ini
-results_template=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/templates/test_results_report_test_categories.mako
+logging=/home/xeniaprod/scripts/RadioIslandWQ/config/logconf/nc_historical_email_output.conf
+passworded_settings=/home/xeniaprod/scripts/RadioIslandWQ/config/password_options.ini
+results_template=/home/xeniaprod/scripts/RadioIslandWQ/config/templates/test_results_report_test_categories.mako
 results_outfile=/mnt/wq_feeds/northcarolina/radioisland/prediction_results/prediction_results.html
 report_url=http://129.252.139.124/mapping/xenia/feeds/dhec/vb_engine/prediction_results/
