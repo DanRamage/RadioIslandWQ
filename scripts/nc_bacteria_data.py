@@ -1,10 +1,12 @@
+import logging.config
 import os
 import time
-import requests
-import logging.config
-import xlrd
 from datetime import datetime
+
+import requests
+import xlrd
 from pytz import timezone
+
 from nc_sample_data import nc_wq_sample_data
 
 logger = logging.getLogger()
@@ -86,8 +88,8 @@ def parse_excel_data(file, monitoring_sites, wq_data_collection):
                 if matched:
                     try:
                         wq_sample_rec = nc_wq_sample_data()
-                        wq_sample_rec.site_id = site_nfo.description
-                        wq_sample_rec.station = site_nfo.name
+                        wq_sample_rec.site_id = site_nfo.name
+                        wq_sample_rec.station = site_nfo.description
                         try:
                             date_val = xlrd.xldate.xldate_as_datetime(data_row[date_ndx].value, wb.datemode)
                         except Exception as e:

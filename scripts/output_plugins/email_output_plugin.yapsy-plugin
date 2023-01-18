@@ -1,0 +1,17 @@
+[Core]
+Name = WQ Email Plugin
+Module = email_output_plugin
+
+[Documentation]
+Author = Dan Ramage
+Version = 0.1
+Website = http://howsthebeach.org
+Description = RadioIsland specific water quality processing.
+
+[Settings]
+enabled=True
+logging=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/logconf/nc_historical_email_output.conf
+passworded_settings=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/password_options.ini
+results_template=/Users/danramage/Documents/workspace/WaterQuality/RadioIslandWQ/config/templates/test_results_report_test_categories.mako
+results_outfile=/mnt/wq_feeds/northcarolina/radioisland/prediction_results/prediction_results.html
+report_url=http://129.252.139.124/mapping/xenia/feeds/dhec/vb_engine/prediction_results/

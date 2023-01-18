@@ -65,8 +65,9 @@ class radioisland_prediction_engine(wq_prediction_engine):
             # Wait for the plugings to finish up.
             self.logger.info("Waiting for %d plugins to complete." % (plugin_cnt))
             for plugin in simplePluginManager.getAllPlugins():
-                plugin.plugin_object.join()
-                plugin.plugin_object.finalize()
+                if plugin.details.getboolean('Settings', 'Enabled'):
+                    plugin.plugin_object.join()
+                    plugin.plugin_object.finalize()
             while not output_queue.empty():
                 results = output_queue.get()
                 if results[0] == data_result_types.MODEL_DATA_TYPE:
@@ -100,25 +101,31 @@ class radioisland_prediction_engine(wq_prediction_engine):
         plugin_start_time = time.time()
         for plugin in simplePluginManager.getAllPlugins():
             try:
-                self.logger.info("Starting plugin: %s" % (plugin.name))
-                if plugin.plugin_object.initialize_plugin(details=plugin.details,
-                                                          prediction_date=kwargs['prediction_date'].astimezone(
-                                                              timezone("US/Eastern")).strftime("%Y-%m-%d %H:%M:%S"),
-                                                          execution_date=kwargs['prediction_run_date'].strftime(
-                                                              "%Y-%m-%d %H:%M:%S"),
-                                                          ensemble_tests=kwargs['site_model_ensemble']
-                                                          ):
-                    plugin.plugin_object.start()
-                    plugin_cnt += 1
+                if plugin.details.getboolean('Settings', 'Enabled'):
+                    self.logger.info("Starting plugin: %s" % (plugin.name))
+                    if plugin.plugin_object.initialize_plugin(details=plugin.details,
+                                                              prediction_date=kwargs['prediction_date'].astimezone(
+                                                                  timezone("US/Eastern")).strftime("%Y-%m-%d %H:%M:%S"),
+                                                              execution_date=kwargs['prediction_run_date'].strftime(
+                                                                  "%Y-%m-%d %H:%M:%S"),
+                                                              ensemble_tests=kwargs['site_model_ensemble'],
+                                                              nowcast_site=kwargs['nowcast_site']
+                                                              ):
+                        plugin.plugin_object.start()
+                        plugin_cnt += 1
+                    else:
+                        self.logger.error("Failed to initialize plugin: %s" % (plugin.details))
                 else:
-                    self.logger.error("Failed to initialize plugin: %s" % (plugin.details))
-            except  Exception as e:
+                    self.logger.info("Plugin: %s not enabled." % (plugin.name))
+
+            except Exception as e:
                 self.logger.exception(e)
         # Wait for the plugings to finish up.
         self.logger.info("Waiting for %d plugins to complete." % (plugin_cnt))
         for plugin in simplePluginManager.getAllPlugins():
-            plugin.plugin_object.join()
-            plugin.plugin_object.finalize()
+            if plugin.details.getboolean('Settings', 'Enabled'):
+                plugin.plugin_object.join()
+                plugin.plugin_object.finalize()
 
         self.logger.debug("%d output plugins run in %f seconds" % (plugin_cnt, time.time() - plugin_start_time))
         self.logger.info("Finished output_results")
@@ -136,6 +143,7 @@ class radioisland_prediction_engine(wq_prediction_engine):
                 data_collector_plugin_directories = data_collector_plugin_directories.split(',')
                 self.collect_data(data_collector_plugin_directories=data_collector_plugin_directories)
 
+            nowcast_site_name = config_file.get('settings', 'nowcast_site_name')
             boundaries_location_file = config_file.get('boundaries_settings', 'boundaries_file')
             sites_location_file = config_file.get('boundaries_settings', 'sample_sites')
             units_file = config_file.get('units_conversion', 'config_file')
@@ -224,7 +232,8 @@ class radioisland_prediction_engine(wq_prediction_engine):
                     self.output_results(output_plugin_directories=output_plugin_dirs,
                                         site_model_ensemble=site_model_ensemble,
                                         prediction_date=kwargs['begin_date'],
-                                        prediction_run_date=prediction_testrun_date)
+                                        prediction_run_date=prediction_testrun_date,
+                                        nowcast_site=nowcast_site_name)
             except Exception as e:
                 self.logger.exception(e)
 
