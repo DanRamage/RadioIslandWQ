@@ -9,6 +9,7 @@ Website = http://howsthebeach.org
 Description = RadioIsland specific nexrad data processing.
 
 [Settings]
+Enabled=True
 ini_file=/home/xeniaprod/scripts/RadioIslandWQ/config/radioisland_prediction_engine.ini
 log_config=/home/xeniaprod/scripts/RadioIslandWQ/config/logconf/nc_historical_nexrad.conf
 xmrg_log_file=/home/xeniaprod/tmp/log/radioisland_nexrad_workers.log

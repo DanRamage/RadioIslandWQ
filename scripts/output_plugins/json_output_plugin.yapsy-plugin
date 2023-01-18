@@ -9,5 +9,6 @@ Website = http://howsthebeach.org
 Description = RadioIsland specific water quality processing.
 
 [Settings]
+Enabled=True
 json_outfile=/mnt/wq_feeds/northcarolina/radioisland/Predictions.json
 logging=/home/xeniaprod/scripts/RadioIslandWQ/config/logconf/json_output.conf
