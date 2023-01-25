@@ -10,11 +10,10 @@ from datetime import datetime, timedelta
 import pandas as pd
 from NOAATideData import noaaTideDataExt
 from pytz import timezone
-from sqlalchemy import or_
+from sqlalchemy import or_, exc
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append("../../commonfiles/python")
-
 from PlatformMapping import ModelSitesPlatforms
 from stats import calcAvgSpeedAndDirV2
 from wq_sites import wq_sample_sites
@@ -34,7 +33,7 @@ class RadioIslandData:
     def __init__(self):
         self._site = None
         self._db_obj = None
-        self._nexrad_db = None
+        self._project_local_db = None
         self._df_column_names = []
         self._platforms_config_json = None
         self._tide_station = None
@@ -47,63 +46,72 @@ class RadioIslandData:
     def get_data_frame(self):
         return self._data_frame
 
-    def connect_observation_db(self, **db_config):
-        ret_val = False
-        if "sqlite_database_file" in db_config:
-            db_file = db_config["sqlite_database_file"]
-            self._db_obj = sl_xeniaAlchemy()
-            if self._db_obj.connectDB("sqlite", None, None, db_file, None, False):
-                logger.info("Succesfully connect to DB: %s" % (db_file))
-                ret_val = True
+    def connect_observation_db(self, sqlite_db_file="",
+                               db_type="",
+                               xenia_obs_db_user="", xenia_obs_db_password="",
+                               xenia_obs_db_host="",
+                               xenia_obs_db_name=""
+                               ):
+        db_obj = None
+        if len(sqlite_db_file):
+            db_obj = sl_xeniaAlchemy()
+            if db_obj.connectDB("sqlite", None, None, sqlite_db_file, None, False):
+                logger.info(f"Succesfully connect to DB: {sqlite_db_file}")
             else:
-                logger.error("Unable to connect to DB: %s" % (db_file))
+                logger.error(f"Unable to connect to DB: {sqlite_db_file}")
+                db_obj = None
         else:
             try:
                 # Connect to the xenia database we use for observations aggregation.
-                self.xenia_obs_db = xeniaAlchemy()
-                if self.xenia_obs_db.connectDB(
-                        db_config["xenia_obs_db_type"],
-                        db_config["xenia_obs_db_user"],
-                        db_config["xenia_obs_db_password"],
-                        db_config["xenia_obs_db_host"],
-                        db_config["xenia_obs_db_name"],
+                db_obj = xeniaAlchemy()
+                if db_obj.connectDB(
+                        db_type,
+                        xenia_obs_db_user,
+                        xenia_obs_db_password,
+                        xenia_obs_db_host,
+                        xenia_obs_db_name,
                         False,
                 ):
                     logger.info(
-                        f"Succesfully connect to DB: {db_config['xenia_obs_db_name']} at "
-                        f"{db_config['xenia_obs_db_host']}"
+                        f"Succesfully connect to DB: {xenia_obs_db_name} at "
+                        f"{xenia_obs_db_host}"
                     )
-                    ret_val = True
                 else:
                     logger.error(
-                        "Unable to connect to DB: {db_config['xenia_obs_db_name']} at "
-                        f"{db_config['xenia_obs_db_host']}"
+                        f"Unable to connect to DB: {xenia_obs_db_name} at "
+                        f"{xenia_obs_db_host}"
                     )
+                    db_obj = None
 
             except Exception as e:
                 logger.exception(e)
-                raise
+                db_obj = None
+        return db_obj
 
-        return ret_val
-
-    def connect_nexrad_db(self, **db_config):
+    def connect_nexrad_db(self, nexrad_db_file):
         ret_val = False
-        if "nexrad_database_file" in db_config:
-            db_file = db_config["nexrad_database_file"]
-            try:
-                self._nexrad_db = wqDB(db_file, __name__)
-                ret_val = True
-            except Exception as e:
-                logger.exception(e)
+        try:
+            self._project_local_db = wqDB(nexrad_db_file, __name__)
+            ret_val = True
+        except Exception as e:
+            logger.exception(e)
 
         return ret_val
 
-    def load_platform_configurations(
-            self, platform_cfg, observation_db_config, nexrad_db_config
-    ):
+    def load_platform_configurations(self, platform_cfg,
+                                     local_project_db_config,
+                                     sqlite_db_file="",
+                                     db_type="",
+                                     xenia_obs_db_user="", xenia_obs_db_password="",
+                                     xenia_obs_db_host="",
+                                     xenia_obs_db_name=""):
         # The observations and NEXRAD platform data are stored in different databases in production.
         nexrad_cfg = {}
         obs_cfg = {}
+        # We want to save the observations to our project database, this is the same DB the NEXRAD
+        # data is stored. We keep these separate from the nexrad_cfg above as that is for querying the data.
+        project_db_cfg = {}
+
         for site in platform_cfg:
             for platform in platform_cfg[site]:
                 org, name, type = platform.split(".")
@@ -112,6 +120,10 @@ class RadioIslandData:
                         obs_cfg[site] = {}
                         obs_cfg[site][platform] = {}
                     obs_cfg[site][platform] = platform_cfg[site][platform]
+                    if site not in project_db_cfg:
+                        project_db_cfg[site] = {}
+                        project_db_cfg[site][platform] = {}
+                    project_db_cfg[site][platform] = platform_cfg[site][platform]
                 else:
                     if site not in nexrad_cfg:
                         nexrad_cfg[site] = {}
@@ -119,47 +131,81 @@ class RadioIslandData:
                     nexrad_cfg[site][platform] = platform_cfg[site][platform]
 
         self._platform_mappings = ModelSitesPlatforms()
-
-        self._platform_mappings.from_json(
-            obs_cfg,
-            db_type="postgresql",
-            db_user=observation_db_config["xenia_obs_db_user"],
-            db_password=observation_db_config["xenia_obs_db_password"],
-            db_host=observation_db_config["xenia_obs_db_host"],
-            db_name=observation_db_config["xenia_obs_db_name"],
-        )
-
-        self._nexrad_mappings = ModelSitesPlatforms()
-        self._nexrad_mappings.from_json(
-            nexrad_cfg, sqlite_database_file=nexrad_db_config["nexrad_database_file"]
-        )
+        try:
+            self._platform_mappings.build_mappings(
+                obs_cfg,
+                sqlite_db_file,
+                db_type,
+                xenia_obs_db_user, xenia_obs_db_password,
+                xenia_obs_db_host,
+                xenia_obs_db_name
+            )
+        except Exception as e:
+            logger.exception(e)
+            return False
+        else:
+            self._nexrad_mappings = ModelSitesPlatforms()
+            self._local_db_mappings = ModelSitesPlatforms()
+            try:
+                self._nexrad_mappings.build_mappings(nexrad_cfg, local_project_db_config)
+                self._local_db_mappings.build_mappings(project_db_cfg, local_project_db_config)
+            except Exception as e:
+                logger.exception(e)
+                return False
+        return True
 
     def initialize(
             self,
             site,
             platform_configuration,
             tide_station,
-            observation_db_config,
             nexrad_db_config,
+            sqlite_db_file="",
+            db_type="",
+            xenia_obs_db_user="", xenia_obs_db_password="",
+            xenia_obs_db_host="",
+            xenia_obs_db_name=""
     ):
         self._site = site
         self._tide_station = tide_station
-        self.load_platform_configurations(
-            platform_configuration, observation_db_config, nexrad_db_config
-        )
         try:
-            if not self.connect_observation_db(**observation_db_config):
+            self.xenia_obs_db = self.connect_observation_db(
+                sqlite_db_file,
+                db_type,
+                xenia_obs_db_user, xenia_obs_db_password,
+                xenia_obs_db_host,
+                xenia_obs_db_name
+            )
+            if self.xenia_obs_db is None:
                 logger.error("Unable to connect to observation database.")
                 return False
         except Exception as e:
             logger.exception(e)
             return False
         try:
-            if not self.connect_nexrad_db(**nexrad_db_config):
+            if not self.connect_nexrad_db(nexrad_db_config):
                 logger.error("Unable to connect to NEXRAD database.")
                 return False
         except Exception as e:
             logger.exception(e)
+            return False
+        try:
+            self.local_project_obs_db = self.connect_observation_db(nexrad_db_config)
+            if self.local_project_obs_db is None:
+                logger.error("Unable to connect to local project observation database.")
+                return False
+        except Exception as e:
+            logger.exception(e)
+            return False
+
+        if not self.load_platform_configurations(
+                platform_configuration,
+                nexrad_db_config,
+                sqlite_db_file,
+                db_type,
+                xenia_obs_db_user, xenia_obs_db_password,
+                xenia_obs_db_host,
+                xenia_obs_db_name):
             return False
 
         self._platforms_config = platform_configuration
@@ -167,10 +213,10 @@ class RadioIslandData:
             self._df_column_names.append("entero_date")
             # self._df_column_names.append('entero_date_utc')
             self._df_column_names.append("enterococcus_value")
-            self._df_column_names.append("{}_tide_range".format(self._tide_station))
-            self._df_column_names.append("{}_tide_hi".format(self._tide_station))
-            self._df_column_names.append("{}_tide_lo".format(self._tide_station))
-            self._df_column_names.append("{}_tide_stage".format(self._tide_station))
+            self._df_column_names.append(f"{self._tide_station}_tide_range")
+            self._df_column_names.append(f"{self._tide_station}_tide_hi")
+            self._df_column_names.append(f"{self._tide_station}_tide_lo")
+            self._df_column_names.append(f"{self._tide_station}_tide_stage")
             #
             model_site_platforms = self._platform_mappings.get_site(self._site)
             for platform_handle in model_site_platforms.platforms:
@@ -191,34 +237,22 @@ class RadioIslandData:
                                         obs.target_obs != "wind_speed"
                                         and obs.target_obs != "wind_from_direction"
                                 ):
-                                    col_name = "{name}_{obs}_{hour}".format(
-                                        name=name, obs=obs.target_obs, hour=hour
-                                    )
+                                    col_name = f"{name}_{obs.target_obs}_{hour}"
                                     self._df_column_names.append(col_name)
                                 else:
                                     if obs.target_obs == "wind_speed":
                                         # We want to have vector wind speed/dir as well as the magnitude and direction
-                                        col_name = "{name}_wind_v_{hour}".format(
-                                            name=name, hour=hour
-                                        )
+                                        col_name = f"{name}_wind_v_{hour}"
                                         self._df_column_names.append(col_name)
-                                        col_name = "{name}_wind_speed_{hour}".format(
-                                            name=name, hour=hour
-                                        )
+                                        col_name = f"{name}_wind_speed_{hour}"
                                         self._df_column_names.append(col_name)
                                     if obs.target_obs == "wind_from_direction":
-                                        col_name = (
-                                            "{name}_wind_from_direction_{hour}".format(
-                                                name=name, hour=hour
-                                            )
-                                        )
+                                        col_name = f"{name}_wind_from_direction_{hour}"
                                         self._df_column_names.append(col_name)
-                                        col_name = "{name}_wind_u_{hour}".format(
-                                            name=name, hour=hour
-                                        )
+                                        col_name = f"{name}_wind_u_{hour}"
                                         self._df_column_names.append(col_name)
                 else:
-                    col_name = "{name}_{obs}".format(name=name, obs=obs.target_obs)
+                    col_name = f"{name}_{obs.target_obs}"
                     self._df_column_names.append(col_name)
 
             model_site_nexrad_platforms = self._nexrad_mappings.get_site(self._site)
@@ -237,25 +271,19 @@ class RadioIslandData:
                             # For first loop iteration, we add the extra nexrad data columns
                             if hour == 24:
                                 self._df_column_names.append(
-                                    "{name}_nexrad_total_1_day_delay".format(name=name)
-                                )
+                                    f"{name}_nexrad_total_1_day_delay")
                                 self._df_column_names.append(
-                                    "{name}_nexrad_total_2_day_delay".format(name=name)
-                                )
+                                    f"{name}_nexrad_total_2_day_delay")
                                 self._df_column_names.append(
-                                    "{name}_nexrad_total_3_day_delay".format(name=name)
-                                )
+                                    f"{name}_nexrad_total_3_day_delay")
                                 self._df_column_names.append(
-                                    "{name}_nexrad_dry_days_count".format(name=name)
-                                )
+                                    f"{name}_nexrad_dry_days_count")
                                 self._df_column_names.append(
                                     "{name}_nexrad_rainfall_intensity".format(name=name)
                                 )
 
                             self._df_column_names.append(
-                                "{name}_nexrad_summary_{hour}".format(
-                                    name=name, hour=hour
-                                )
+                                f"{name}_nexrad_summary_{hour}"
                             )
             self._data_frame = pd.DataFrame(columns=self._df_column_names)
         return True
@@ -406,6 +434,8 @@ class RadioIslandData:
                             wind_speed_direction[observation.target_obs] = {}
                         wind_speed_direction[observation.target_obs] = obs_recs
 
+                # Now we save the records to our project database.
+                self.save_to_project_database(obs_recs)
         if len(wind_speed_direction):
             wind_speed_data = wind_speed_direction["wind_speed"]
             wind_dir_data = wind_speed_direction["wind_from_direction"]
@@ -462,7 +492,7 @@ class RadioIslandData:
         # Get the radar data for <previous_hours> in 24 hour intervals
         for prev_hour in range(24, previous_hours + 24, 24):
             col_name = f"{name}_nexrad_summary_{prev_hour}"
-            radar_val = self._nexrad_db.getLastNHoursSummaryFromRadarPrecip(
+            radar_val = self._project_local_db.getLastNHoursSummaryFromRadarPrecip(
                 platform_handle,
                 start_date,
                 prev_hour,
@@ -495,14 +525,14 @@ class RadioIslandData:
             dly_col_name = f"{name}_nexrad_total_3_day_delay"
             self._data_frame.at[self._row_id, dly_col_name] = hour_92 - hour_72
 
-        prev_dry_days = self._nexrad_db.getPrecedingRadarDryDaysCount(
+        prev_dry_days = self._project_local_db.getPrecedingRadarDryDaysCount(
             platform_handle, start_date, "precipitation_radar_weighted_average", "mm"
         )
         if prev_dry_days is not None:
             col_name = "{name}_nexrad_dry_days_count".format(name=name)
             self._data_frame.at[self._row_id, col_name] = prev_dry_days
 
-        rainfall_intensity = self._nexrad_db.calcRadarRainfallIntensity(
+        rainfall_intensity = self._project_local_db.calcRadarRainfallIntensity(
             platform_handle,
             start_date,
             60,
@@ -517,6 +547,51 @@ class RadioIslandData:
             "Finished retrieving nexrad data datetime: %s"
             % (start_date.strftime("%Y-%m-%d %H:%M:%S"))
         )
+
+    def save_to_project_database(self, source_database_records):
+        row_entry_date = datetime.now()
+        # Find the local db observation
+        local_db_platforms = self._local_db_mappings.get_site(self._site)
+
+        cur_platform_handle = None
+        cur_obs_name = None
+        local_obs = None
+        local_db_platform_observations = None
+        for src_rec in source_database_records:
+            if src_rec.platform_handle != cur_platform_handle:
+                cur_platform_handle = src_rec.platform_handle
+                local_db_platform_observations = local_db_platforms.platform_observation_mapping(cur_platform_handle)
+            # Lookup the observation map for the local database. We need to know the m_type_id
+            # sensor_id for the local database to save the records.
+            if src_rec.sensor.short_name != cur_obs_name:
+                cur_obs_name = src_rec.sensor.short_name
+                for local_obs in local_db_platform_observations:
+                    if local_obs.target_obs == cur_obs_name:
+                        break
+            if local_db_platform_observations is not None and local_obs is not None:
+                local_rec = sl_multi_obs()
+                local_rec.row_entry_date = row_entry_date.strftime("%Y-%m-%d %H:%M:%S")
+                local_rec.platform_handle = src_rec.platform_handle
+                local_rec.m_lat = src_rec.m_lat
+                local_rec.m_lon = src_rec.m_lon
+                local_rec.m_value = src_rec.m_value
+                local_rec.m_date = src_rec.m_date
+                local_rec.m_type_id = local_obs.m_type_id
+                local_rec.s_order = local_obs.s_order
+                local_rec.sensor_id = local_obs.sensor_id
+                try:
+                    self.local_project_obs_db.session.add(local_rec)
+                    self.local_project_obs_db.session.commit()
+                # Duplicate record exception
+                except exc.IntegrityError as e:
+                    self.local_project_obs_db.session.rollback()
+                    logger.error(
+                        f"Duplicate record in local project db. Date: {local_rec.m_date} Obs: {local_obs.target_obs}")
+                    e
+                except Exception as e:
+                    logger.exception(e)
+
+        return
 
     def to_csv(self, output_file):
         if self._data_frame is not None:

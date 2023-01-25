@@ -92,7 +92,7 @@ class radioisland_prediction_engine(wq_prediction_engine):
         self.logger.info("Begin output_results")
 
         simplePluginManager = PluginManager()
-        logging.getLogger("yapsy").setLevel(logging.DEBUG)
+        # logging.getLogger("yapsy").setLevel(logging.DEBUG)
         simplePluginManager.setCategoriesFilter(
             {"OutputResults": data_collector_plugin}
         )
@@ -105,7 +105,7 @@ class radioisland_prediction_engine(wq_prediction_engine):
         yapsy_logger = logging.getLogger("yapsy")
         yapsy_logger.setLevel(logging.DEBUG)
         # yapsy_logger.parent.level = logging.DEBUG
-        yapsy_logger.disabled = False
+        yapsy_logger.disabled = True
 
         simplePluginManager.collectPlugins()
 
@@ -244,44 +244,45 @@ class radioisland_prediction_engine(wq_prediction_engine):
                             with open(obs_platform_config, "r") as platform_json_file:
                                 platforms_config_json = json.load(platform_json_file)
 
-                            observation_db_config = {
-                                "xenia_obs_db_type": "postgresql",
-                                "xenia_obs_db_host": xenia_obs_db_host,
-                                "xenia_obs_db_user": xenia_obs_db_user,
-                                "xenia_obs_db_password": xenia_obs_db_password,
-                                "xenia_obs_db_name": xenia_obs_db_name,
-                            }
                             wq_data = RadioIslandData()
-                            wq_data.initialize(
-                                site.name,
-                                platforms_config_json,
-                                tide_station,
-                                observation_db_config,
-                                {"nexrad_database_file": xenia_nexrad_db_file},
-                            )
-                            wq_data.query_data(
-                                kwargs["begin_date"], kwargs["begin_date"]
-                            )
-                            pd_df = wq_data.get_data_frame()
-                            model_list.runTestsDF(pd_df)
-                            total_test_time = sum(
-                                model.test_time for model in model_list.models
-                            )
-                            self.logger.debug(
-                                "Site: %s total time to execute models: %f ms"
-                                % (site.name, total_test_time * 1000)
-                            )
+                            if wq_data.initialize(
+                                    site.name,
+                                    platforms_config_json,
+                                    tide_station,
+                                    xenia_nexrad_db_file,
+                                    "",
+                                    "postgresql",
+                                    xenia_obs_db_user,
+                                    xenia_obs_db_password,
+                                    xenia_obs_db_host,
+                                    xenia_obs_db_name
+                            ):
+                                wq_data.query_data(
+                                    kwargs["begin_date"], kwargs["begin_date"]
+                                )
+                                pd_df = wq_data.get_data_frame()
+                                model_list.runTestsDF(pd_df)
+                                total_test_time = sum(
+                                    model.test_time for model in model_list.models
+                                )
+                                self.logger.debug(
+                                    "Site: %s total time to execute models: %f ms"
+                                    % (site.name, total_test_time * 1000)
+                                )
 
-                            model_list.overall_prediction()
-                            site_model_ensemble.append(
-                                {
-                                    "metadata": site,
-                                    "models": model_list,
-                                    "statistics": None,
-                                    "entero_value": None,
-                                    "model_data": pd_df,
-                                }
-                            )
+                                model_list.overall_prediction()
+                                site_model_ensemble.append(
+                                    {
+                                        "metadata": site,
+                                        "models": model_list,
+                                        "statistics": None,
+                                        "entero_value": None,
+                                        "model_data": pd_df,
+                                        "platform_configuration": platforms_config_json
+                                    }
+                                )
+                            else:
+                                self.logger.error("Unable to initialize the data object, cannot process models.")
                     except Exception as e:
                         self.logger.exception(e)
 
