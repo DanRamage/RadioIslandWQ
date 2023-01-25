@@ -568,6 +568,7 @@ class RadioIslandData:
                 for local_obs in local_db_platform_observations:
                     if local_obs.target_obs == cur_obs_name:
                         break
+            logger.debug(f"Saving {cur_platform_handle} project database Obs: {cur_obs_name}")
             if local_db_platform_observations is not None and local_obs is not None:
                 local_rec = sl_multi_obs()
                 local_rec.row_entry_date = row_entry_date.strftime("%Y-%m-%d %H:%M:%S")
