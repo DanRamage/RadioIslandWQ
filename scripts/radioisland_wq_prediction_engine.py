@@ -343,10 +343,11 @@ class radioisland_prediction_engine(wq_prediction_engine):
                     model_name = model_config_file.get(
                         f"machine_learning_model_{(cnt + 1)}", "name"
                     )
-                    # This is the filename of the model we user for the nowcast.
+                    # This is the filename of the model we use for the nowcast.
                     model_filename = model_config_file.get(
                         f"machine_learning_model_{(cnt + 1)}", "model_file"
                     )
+                    self.logger.info(f"Model: {model_name} loading file: {model_filename}")
                     if model_object_name == "cbm_model_classifier":
                         false_positive_threshold = model_config_file.get(
                             f"machine_learning_model_{(cnt + 1)}",
