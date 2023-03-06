@@ -210,13 +210,13 @@ class RadioIslandData:
 
         self._platforms_config = platform_configuration
         if len(self._df_column_names) <= 0:
-            self._df_column_names.append("entero_date")
+            self._df_column_names.append(("entero_date", pd.Series(dtype='str')))
             # self._df_column_names.append('entero_date_utc')
-            self._df_column_names.append("enterococcus_value")
-            self._df_column_names.append(f"{self._tide_station}_tide_range")
-            self._df_column_names.append(f"{self._tide_station}_tide_hi")
-            self._df_column_names.append(f"{self._tide_station}_tide_lo")
-            self._df_column_names.append(f"{self._tide_station}_tide_stage")
+            self._df_column_names.append(("enterococcus_value", pd.Series(dtype='float')))
+            self._df_column_names.append((f"{self._tide_station}_tide_range", pd.Series(dtype='float')))
+            self._df_column_names.append((f"{self._tide_station}_tide_hi", pd.Series(dtype='float')))
+            self._df_column_names.append((f"{self._tide_station}_tide_lo", pd.Series(dtype='float')))
+            self._df_column_names.append((f"{self._tide_station}_tide_stage", pd.Series(dtype='int')))
             #
             model_site_platforms = self._platform_mappings.get_site(self._site)
             for platform_handle in model_site_platforms.platforms:
@@ -238,22 +238,22 @@ class RadioIslandData:
                                         and obs.target_obs != "wind_from_direction"
                                 ):
                                     col_name = f"{name}_{obs.target_obs}_{hour}"
-                                    self._df_column_names.append(col_name)
+                                    self._df_column_names.append((col_name, pd.Series(dtype='float')))
                                 else:
                                     if obs.target_obs == "wind_speed":
                                         # We want to have vector wind speed/dir as well as the magnitude and direction
                                         col_name = f"{name}_wind_v_{hour}"
-                                        self._df_column_names.append(col_name)
+                                        self._df_column_names.append((col_name, pd.Series(dtype='float')))
                                         col_name = f"{name}_wind_speed_{hour}"
-                                        self._df_column_names.append(col_name)
+                                        self._df_column_names.append((col_name, pd.Series(dtype='float')))
                                     if obs.target_obs == "wind_from_direction":
                                         col_name = f"{name}_wind_from_direction_{hour}"
-                                        self._df_column_names.append(col_name)
+                                        self._df_column_names.append((col_name, pd.Series(dtype='float')))
                                         col_name = f"{name}_wind_u_{hour}"
-                                        self._df_column_names.append(col_name)
+                                        self._df_column_names.append((col_name, pd.Series(dtype='float')))
                 else:
                     col_name = f"{name}_{obs.target_obs}"
-                    self._df_column_names.append(col_name)
+                    self._df_column_names.append((col_name, pd.Series(dtype='float')))
 
             model_site_nexrad_platforms = self._nexrad_mappings.get_site(self._site)
             for platform_handle in model_site_nexrad_platforms.platforms:
@@ -271,21 +271,25 @@ class RadioIslandData:
                             # For first loop iteration, we add the extra nexrad data columns
                             if hour == 24:
                                 self._df_column_names.append(
-                                    f"{name}_nexrad_total_1_day_delay")
+                                    (f"{name}_nexrad_total_1_day_delay", pd.Series(dtype='float')))
                                 self._df_column_names.append(
-                                    f"{name}_nexrad_total_2_day_delay")
+                                    (f"{name}_nexrad_total_2_day_delay", pd.Series(dtype='float'))
+                                )
                                 self._df_column_names.append(
-                                    f"{name}_nexrad_total_3_day_delay")
+                                    (f"{name}_nexrad_total_3_day_delay", pd.Series(dtype='float')))
                                 self._df_column_names.append(
-                                    f"{name}_nexrad_dry_days_count")
+                                    (f"{name}_nexrad_dry_days_count", pd.Series(dtype='int')))
                                 self._df_column_names.append(
-                                    "{name}_nexrad_rainfall_intensity".format(name=name)
+                                    (f"{name}_nexrad_rainfall_pd.Series(dtype='int')ensity", pd.Series(dtype='float'))
                                 )
 
                             self._df_column_names.append(
-                                f"{name}_nexrad_summary_{hour}"
+                                (f"{name}_nexrad_summary_{hour}", pd.Series(dtype='float'))
                             )
-            self._data_frame = pd.DataFrame(columns=self._df_column_names)
+            df_columns = {}
+            for col_tuple in self._df_column_names:
+                df_columns[col_tuple[0]] = col_tuple[1]
+            self._data_frame = pd.DataFrame(df_columns)
         return True
 
     def query_data(self, start_date, end_date):
@@ -368,7 +372,7 @@ class RadioIslandData:
             )
             self._data_frame.at[
                 self._row_id, f"{self._tide_station}_tide_stage"
-            ] = tide_data["tide_stage"]
+            ] = int(tide_data["tide_stage"])
 
             logger.debug(
                 f"Finished retrieving tide data for station: {self._tide_station} date: {start_date} in "

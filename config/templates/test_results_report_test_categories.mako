@@ -26,7 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Myrtle Beach Quality Prediction Results</h1>
+            <h1>Radio Island Water Quality Prediction Results</h1>
             <h2>Prediction for: ${prediction_date}</h2>
             <h3>Prediction executed: ${execution_date}</h3>
         </div>

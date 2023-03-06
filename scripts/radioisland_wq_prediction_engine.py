@@ -17,6 +17,7 @@ from yapsy.PluginManager import PluginManager
 
 multiprocessing.set_start_method("fork")
 from cat_boost_model import cbm_model_classifier
+from xgboost_model import xgb_model_regressor, xgb_model_classifier
 from data_collector_plugin import data_collector_plugin
 from model_ensemble import model_ensemble
 from radioisland_data import RadioIslandData
@@ -266,8 +267,7 @@ class radioisland_prediction_engine(wq_prediction_engine):
                                     model.test_time for model in model_list.models
                                 )
                                 self.logger.debug(
-                                    "Site: %s total time to execute models: %f ms"
-                                    % (site.name, total_test_time * 1000)
+                                    f"Site: {site.name} total time to execute models: {total_test_time * 1000} ms"
                                 )
 
                                 model_list.overall_prediction()
@@ -335,19 +335,19 @@ class radioisland_prediction_engine(wq_prediction_engine):
                     model_object_name = model_config_file.get(
                         f"machine_learning_model_{(cnt + 1)}", "model_object"
                     )
+                    # Get the category of the model this represents.
+                    type = model_config_file.get(
+                        f"machine_learning_model_{(cnt + 1)}", "type"
+                    )
+                    # This is the name we use on the reports to identify the model.
+                    model_name = model_config_file.get(
+                        f"machine_learning_model_{(cnt + 1)}", "name"
+                    )
+                    # This is the filename of the model we user for the nowcast.
+                    model_filename = model_config_file.get(
+                        f"machine_learning_model_{(cnt + 1)}", "model_file"
+                    )
                     if model_object_name == "cbm_model_classifier":
-                        # Get the category of the model this represents.
-                        type = model_config_file.get(
-                            f"machine_learning_model_{(cnt + 1)}", "type"
-                        )
-                        # This is the name we use on the reports to identify the model.
-                        model_name = model_config_file.get(
-                            f"machine_learning_model_{(cnt + 1)}", "name"
-                        )
-                        # This is the filename of the model we user for the nowcast.
-                        model_filename = model_config_file.get(
-                            f"machine_learning_model_{(cnt + 1)}", "model_file"
-                        )
                         false_positive_threshold = model_config_file.get(
                             f"machine_learning_model_{(cnt + 1)}",
                             "false_positive_threshold",
@@ -367,10 +367,40 @@ class radioisland_prediction_engine(wq_prediction_engine):
                             false_negative_threshold=false_negative_threshold,
                             model_data_list=None,
                         )
-                        self.logger.debug(
-                            f"Site: {site_name} Model name: {model_name} model file: {model_filename}"
+                    if model_object_name == "xgb_model_classifier":
+                        false_positive_threshold = model_config_file.get(
+                            f"machine_learning_model_{(cnt + 1)}",
+                            "false_positive_threshold",
+                            fallback=None,
                         )
-                        model_list.append(model_object)
+                        false_negative_threshold = model_config_file.get(
+                            f"machine_learning_model_{(cnt + 1)}",
+                            "false_negative_threshold",
+                            fallback=None,
+                        )
+                        model_object = xgb_model_classifier(
+                            site_name=site_name,
+                            model_name=model_name,
+                            model_type=type,
+                            model_file=model_filename,
+                            false_positive_threshold=false_positive_threshold,
+                            false_negative_threshold=false_negative_threshold,
+                            model_data_list=None,
+                        )
+                    if model_object_name == "xgb_model_regressor":
+                        model_object = xgb_model_regressor(
+                            site_name=site_name,
+                            model_name=model_name,
+                            model_type=type,
+                            model_file=model_filename,
+                            low_limit=entero_lo_limit,
+                            high_limit=entero_hi_limit,
+                            model_data_list=None
+                        )
+                    self.logger.debug(
+                        f"Site: {site_name} Model name: {model_name} model file: {model_filename}"
+                    )
+                    model_list.append(model_object)
 
                 except Exception as e:
                     self.logger.exception(e)
