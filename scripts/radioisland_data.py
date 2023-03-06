@@ -590,8 +590,8 @@ class RadioIslandData:
                 # Duplicate record exception
                 except exc.IntegrityError as e:
                     self.local_project_obs_db.session.rollback()
-                    logger.error(
-                        f"Duplicate record in local project db. Date: {local_rec.m_date} Obs: {local_obs.target_obs}")
+                    # logger.error(
+                    #    f"Duplicate record in local project db. Date: {local_rec.m_date} Obs: {local_obs.target_obs}")
                     e
                 except Exception as e:
                     logger.exception(e)
