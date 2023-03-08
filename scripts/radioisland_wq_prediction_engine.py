@@ -16,7 +16,7 @@ from pytz import timezone
 from yapsy.PluginManager import PluginManager
 
 multiprocessing.set_start_method("fork")
-from cat_boost_model import cbm_model_classifier
+from cat_boost_model import cbm_model_classifier, cbm_model_regressor
 from xgboost_model import xgb_model_regressor, xgb_model_classifier
 from data_collector_plugin import data_collector_plugin
 from model_ensemble import model_ensemble
@@ -368,7 +368,19 @@ class radioisland_prediction_engine(wq_prediction_engine):
                             false_negative_threshold=false_negative_threshold,
                             model_data_list=None,
                         )
-                    if model_object_name == "xgb_model_classifier":
+
+                    elif model_object_name == "cbm_model_regressor":
+                        model_object = cbm_model_regressor(
+                            site_name=site_name,
+                            model_name=model_name,
+                            model_type=type,
+                            model_file=model_filename,
+                            low_limit=entero_lo_limit,
+                            high_limit=entero_hi_limit,
+                            model_data_list=None
+                        )
+
+                    elif model_object_name == "xgb_model_classifier":
                         false_positive_threshold = model_config_file.get(
                             f"machine_learning_model_{(cnt + 1)}",
                             "false_positive_threshold",
@@ -388,7 +400,7 @@ class radioisland_prediction_engine(wq_prediction_engine):
                             false_negative_threshold=false_negative_threshold,
                             model_data_list=None,
                         )
-                    if model_object_name == "xgb_model_regressor":
+                    elif model_object_name == "xgb_model_regressor":
                         model_object = xgb_model_regressor(
                             site_name=site_name,
                             model_name=model_name,
