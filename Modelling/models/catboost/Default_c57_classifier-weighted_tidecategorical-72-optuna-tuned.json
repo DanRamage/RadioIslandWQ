@@ -1,0 +1,1030 @@
+{
+  "features_info": {
+    "categorical_features": [
+      {
+        "feature_id": "8656483_tide_stage",
+        "feature_index": 0,
+        "flat_feature_index": 0
+      }
+    ],
+    "float_features": [
+      {
+        "borders": [
+          0.63241195678710938
+        ],
+        "feature_id": "RadioIsland_nexrad_total_1_day_delay",
+        "feature_index": 0,
+        "flat_feature_index": 1,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_total_2_day_delay",
+        "feature_index": 1,
+        "flat_feature_index": 2,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_total_3_day_delay",
+        "feature_index": 2,
+        "flat_feature_index": 3,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_dry_days_count",
+        "feature_index": 3,
+        "flat_feature_index": 4,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.0016548442654311657
+        ],
+        "feature_id": "RadioIsland_nexrad_rainfall_intensity",
+        "feature_index": 4,
+        "flat_feature_index": 5,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_24",
+        "feature_index": 5,
+        "flat_feature_index": 6,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.22224944829940796
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_48",
+        "feature_index": 6,
+        "flat_feature_index": 7,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_72",
+        "feature_index": 7,
+        "flat_feature_index": 8,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.54127812385559082
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_96",
+        "feature_index": 8,
+        "flat_feature_index": 9,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.18969503045082092
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_120",
+        "feature_index": 9,
+        "flat_feature_index": 10,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_144",
+        "feature_index": 10,
+        "flat_feature_index": 11,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.1818920224905014
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_168",
+        "feature_index": 11,
+        "flat_feature_index": 12,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.55636072158813477
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_192",
+        "feature_index": 12,
+        "flat_feature_index": 13,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_v_24",
+        "feature_index": 13,
+        "flat_feature_index": 14,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_u_24",
+        "feature_index": 14,
+        "flat_feature_index": 15,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          1023.203369140625
+        ],
+        "feature_id": "8656483_air_pressure_24",
+        "feature_index": 15,
+        "flat_feature_index": 16,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_temperature_24",
+        "feature_index": 16,
+        "flat_feature_index": 17,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_water_temperature_24",
+        "feature_index": 17,
+        "flat_feature_index": 18,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_v_48",
+        "feature_index": 18,
+        "flat_feature_index": 19,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_u_48",
+        "feature_index": 19,
+        "flat_feature_index": 20,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_pressure_48",
+        "feature_index": 20,
+        "flat_feature_index": 21,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          24.194007873535156,
+          28.396354675292969
+        ],
+        "feature_id": "8656483_air_temperature_48",
+        "feature_index": 21,
+        "flat_feature_index": 22,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          28.472099304199219
+        ],
+        "feature_id": "8656483_water_temperature_48",
+        "feature_index": 22,
+        "flat_feature_index": 23,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          -3.5462615489959717
+        ],
+        "feature_id": "8656483_wind_v_72",
+        "feature_index": 23,
+        "flat_feature_index": 24,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_u_72",
+        "feature_index": 24,
+        "flat_feature_index": 25,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_pressure_72",
+        "feature_index": 25,
+        "flat_feature_index": 26,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_temperature_72",
+        "feature_index": 26,
+        "flat_feature_index": 27,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_water_temperature_72",
+        "feature_index": 27,
+        "flat_feature_index": 28,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      }
+    ]
+  },
+  "model_info": {
+    "catboost_version_info": "Git info:\n    Commit: d63ba37ba1c5b0a3082a19c673c11a93b77cb8c2\n    Branch: heads/master\n    Author: somov <somov@yandex-team.ru>\n    Summary: Correct debug trap for M1\n    git-svn info:\n    Last Changed Rev: 9293085\n\nOther info:\n    Build by: zomb-ml-platform-oss\n    Top src dir: C:\\Program Files (x86)\\Go Agent\\pipelines\\BuildMaster\\catboost.git\n    Top build dir: C:\\Users\\zomb-ml-platform-msk\\.ya\\build\n    Hostname: platform-w10\n    Host information: \n        Microsoft Windows [Version 10.0.19044.2130]\n\n    ",
+    "class_params": {
+      "class_label_type": "Integer",
+      "class_names": [
+        0,
+        1
+      ],
+      "class_to_label": [
+        0,
+        1
+      ],
+      "classes_count": 0
+    },
+    "model_guid": "4f5f0201-539cbb71-40988404-2d7d44f0",
+    "output_options": "{\"name\":\"experiment\",\"verbose\":0,\"test_error_log\":\"test_error.tsv\",\"json_log\":\"catboost_training.json\",\"result_model_file\":\"model\",\"roc_file\":\"\",\"eval_file_name\":\"\",\"use_best_model\":true,\"allow_writing_files\":true,\"prediction_type\":[\"RawFormulaVal\"],\"fstr_internal_file\":\"\",\"output_columns\":[\"SampleId\",\"RawFormulaVal\",\"Label\"],\"snapshot_interval\":600,\"time_left_log\":\"time_left.tsv\",\"fstr_type\":\"FeatureImportance\",\"profile_log\":\"catboost_profile.log\",\"train_dir\":\"catboost_info\",\"learn_error_log\":\"learn_error.tsv\",\"training_options_file\":\"\",\"snapshot_file\":\"experiment.cbsnapshot\",\"save_snapshot\":false,\"model_format\":[\"CatboostBinary\"],\"final_feature_calcer_computation_mode\":\"Default\",\"metric_period\":1,\"output_borders\":\"\",\"final_ctr_computation_mode\":\"Default\",\"best_model_min_trees\":1,\"fstr_regular_file\":\"\"}",
+    "params": {
+      "boosting_options": {
+        "boost_from_average": false,
+        "boosting_type": "Ordered",
+        "data_partition": "FeatureParallel",
+        "fold_len_multiplier": 2,
+        "fold_permutation_block": 64,
+        "iterations": 1000,
+        "learning_rate": 0.078105002641677856,
+        "min_fold_size": 100,
+        "od_config": {
+          "stop_pvalue": 0,
+          "type": "None",
+          "wait_iterations": 20
+        },
+        "permutation_count": 4
+      },
+      "cat_feature_params": {
+        "combinations_ctrs": [
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Borders",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ],
+              [
+                0.5,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "target_binarization": {
+              "border_count": 1,
+              "border_type": "MinEntropy"
+            }
+          },
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Median"
+            },
+            "ctr_type": "FeatureFreq",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "counter_calc_method": "SkipTest",
+        "ctr_history_unit": "Sample",
+        "max_ctr_complexity": 4,
+        "one_hot_max_size": 2,
+        "per_feature_ctrs": {
+        },
+        "simple_ctrs": [
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Borders",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ],
+              [
+                0.5,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "target_binarization": {
+              "border_count": 1,
+              "border_type": "MinEntropy"
+            }
+          },
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "MinEntropy"
+            },
+            "ctr_type": "FeatureFreq",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "target_binarization": {
+          "border_count": 1,
+          "border_type": "MinEntropy"
+        }
+      },
+      "data_processing_options": {
+        "allow_const_label": false,
+        "auto_class_weights": "None",
+        "class_names": [
+          0,
+          1
+        ],
+        "class_weights": [
+          1,
+          15.047618865966797
+        ],
+        "classes_count": 0,
+        "dev_default_value_fraction_for_sparse": 0.82999998331069946,
+        "dev_sparse_array_indexing": "Indices",
+        "embedding_processing_options": {
+          "embedding_processing": {
+            "default": [
+              "LDA",
+              "KNN"
+            ]
+          }
+        },
+        "eval_fraction": 0,
+        "float_features_binarization": {
+          "border_count": 128,
+          "border_type": "GreedyLogSum",
+          "dev_max_subset_size_for_build_borders": 200000,
+          "nan_mode": "Min"
+        },
+        "force_unit_auto_pair_weights": false,
+        "gpu_cat_features_storage": "GpuRam",
+        "has_time": false,
+        "ignored_features": [
+        ],
+        "per_float_feature_quantization": {
+        },
+        "target_border": null,
+        "text_processing_options": {
+          "dictionaries": [
+            {
+              "dictionary_id": "BiGram",
+              "end_of_sentence_token_policy": "Skip",
+              "end_of_word_token_policy": "Insert",
+              "gram_order": "2",
+              "max_dictionary_size": "50000",
+              "occurrence_lower_bound": "1",
+              "skip_step": "0",
+              "start_token_id": "0",
+              "token_level_type": "Word"
+            },
+            {
+              "dictionary_id": "Word",
+              "end_of_sentence_token_policy": "Skip",
+              "end_of_word_token_policy": "Insert",
+              "gram_order": "1",
+              "max_dictionary_size": "50000",
+              "occurrence_lower_bound": "1",
+              "skip_step": "0",
+              "start_token_id": "0",
+              "token_level_type": "Word"
+            }
+          ],
+          "feature_processing": {
+            "default": [
+              {
+                "dictionaries_names": [
+                  "BiGram",
+                  "Word"
+                ],
+                "feature_calcers": [
+                  "BoW"
+                ],
+                "tokenizers_names": [
+                  "Space"
+                ]
+              },
+              {
+                "dictionaries_names": [
+                  "Word"
+                ],
+                "feature_calcers": [
+                  "NaiveBayes"
+                ],
+                "tokenizers_names": [
+                  "Space"
+                ]
+              }
+            ]
+          },
+          "tokenizers": [
+            {
+              "delimiter": " ",
+              "languages": [
+              ],
+              "lemmatizing": "0",
+              "lowercasing": "0",
+              "number_process_policy": "LeaveAsIs",
+              "number_token": "🔢",
+              "separator_type": "ByDelimiter",
+              "skip_empty": "1",
+              "split_by_set": "0",
+              "subtokens_policy": "SingleToken",
+              "token_types": [
+                "Number",
+                "Unknown",
+                "Word"
+              ],
+              "tokenizer_id": "Space"
+            }
+          ]
+        }
+      },
+      "detailed_profile": false,
+      "flat_params": {
+        "class_weights": [
+          1,
+          15.047619047619047
+        ],
+        "devices": "0:1",
+        "eval_metric": "Accuracy",
+        "loss_function": "Logloss",
+        "task_type": "GPU",
+        "verbose": 0
+      },
+      "logging_level": "Silent",
+      "loss_function": {
+        "params": {
+        },
+        "type": "Logloss"
+      },
+      "metadata": {
+      },
+      "metrics": {
+        "custom_metrics": [
+        ],
+        "eval_metric": {
+          "params": {
+          },
+          "type": "Accuracy"
+        },
+        "objective_metric": {
+          "params": {
+          },
+          "type": "Logloss"
+        }
+      },
+      "model_based_eval_options": {
+        "baseline_model_snapshot": "baseline_model_snapshot",
+        "experiment_count": 200,
+        "experiment_size": 5,
+        "features_to_evaluate": [
+        ],
+        "offset": 1000,
+        "use_evaluated_features_in_baseline_model": false
+      },
+      "pool_metainfo_options": {
+        "tags": {
+        }
+      },
+      "random_seed": 0,
+      "system_options": {
+        "devices": "0:1",
+        "gpu_ram_part": 0.94999999999999996,
+        "pinned_memory_bytes": "104857600",
+        "thread_count": 6,
+        "used_ram_limit": ""
+      },
+      "task_type": "GPU",
+      "tree_learner_options": {
+        "add_ridge_penalty_to_loss_function": false,
+        "bayesian_matrix_reg": 0.10000000149011612,
+        "bootstrap": {
+          "bagging_temperature": 1,
+          "type": "Bayesian"
+        },
+        "depth": 6,
+        "dev_efb_max_buckets": 254,
+        "dev_max_ctr_complexity_for_borders_cache": 1,
+        "fixed_binary_splits": [
+        ],
+        "fold_size_loss_normalization": false,
+        "grow_policy": "SymmetricTree",
+        "l2_leaf_reg": 3,
+        "leaf_estimation_backtracking": "AnyImprovement",
+        "leaf_estimation_iterations": 10,
+        "leaf_estimation_method": "Newton",
+        "max_leaves": 64,
+        "meta_l2_exponent": 1,
+        "meta_l2_frequency": 0,
+        "min_data_in_leaf": 1,
+        "model_size_reg": 0.5,
+        "observations_to_bootstrap": "TestOnly",
+        "penalties": {
+          "feature_weights": {
+          },
+          "first_feature_use_penalties": {
+          },
+          "penalties_coefficient": 1,
+          "per_object_feature_penalties": {
+          }
+        },
+        "random_strength": 1,
+        "rsm": 1,
+        "score_function": "Cosine"
+      }
+    },
+    "train_finish_time": "2023-03-22T13:10:30Z"
+  },
+  "oblivious_trees": [
+    {
+      "leaf_values": [
+        -0.098339810967445374,
+        0.088861159980297089,
+        -0.35912236571311951,
+        -0.14309419691562653,
+        -0.28554844856262207,
+        -0.30691802501678467,
+        0,
+        -0.18520745635032654,
+        0,
+        0,
+        -0.21613827347755432,
+        0.25743463635444641,
+        0,
+        0,
+        0,
+        0
+      ],
+      "leaf_weights": [
+        68.047618865966797,
+        337.80952072143555,
+        41,
+        109.0476188659668,
+        15,
+        20,
+        0,
+        4,
+        0,
+        0,
+        6,
+        31.095237731933594,
+        0,
+        0,
+        0,
+        0
+      ],
+      "splits": [
+        {
+          "border": 0.18969503045082092,
+          "float_feature_index": 9,
+          "split_index": 4,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 24.194007873535156,
+          "float_feature_index": 21,
+          "split_index": 8,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 1023.203369140625,
+          "float_feature_index": 15,
+          "split_index": 7,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 28.396354675292969,
+          "float_feature_index": 21,
+          "split_index": 9,
+          "split_type": "FloatFeature"
+        }
+      ]
+    },
+    {
+      "leaf_values": [
+        -0.19261221587657928,
+        0,
+        -0.12378930300474167,
+        0,
+        0.27932655811309814,
+        0,
+        -0.18018451333045959,
+        -0.091546796262264252,
+        0,
+        0,
+        0,
+        0,
+        -0.21807557344436646,
+        -0.16884587705135345,
+        0,
+        -0.26588144898414612,
+        -0.35537612438201904,
+        0,
+        -0.17618846893310547,
+        0,
+        0.083872921764850616,
+        -0.18455506861209869,
+        0.056900616735219955,
+        0.14856541156768799,
+        -0.18936046957969666,
+        0,
+        0,
+        0,
+        -0.071037270128726959,
+        -0.28584516048431396,
+        -0.27119466662406921,
+        0.088991463184356689,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.12622065842151642,
+        0,
+        0,
+        -0.082416117191314697,
+        -0.21841414272785187,
+        0,
+        -0.074207596480846405,
+        0,
+        -0.16629244387149811,
+        0,
+        0,
+        -0.12622065842151642,
+        -0.11505056172609329,
+        0,
+        0,
+        0,
+        -0.18925364315509796,
+        -0.12622065842151642,
+        -0.082416117191314697,
+        -0.20653469860553741
+      ],
+      "leaf_weights": [
+        5,
+        0,
+        2,
+        0,
+        15.047618865966797,
+        0,
+        4,
+        1,
+        0,
+        0,
+        0,
+        0,
+        7,
+        3,
+        0,
+        12,
+        48,
+        0,
+        4,
+        0,
+        100.23809432983398,
+        4,
+        22.047618865966797,
+        51.142856597900391,
+        5,
+        0,
+        0,
+        0,
+        108.09523773193359,
+        16,
+        13,
+        177.42856979370117,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        1,
+        8,
+        0,
+        1,
+        0,
+        4,
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        5,
+        2,
+        1,
+        6
+      ],
+      "splits": [
+        {
+          "border": 0.22224944829940796,
+          "float_feature_index": 6,
+          "split_index": 2,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.0016548442654311657,
+          "float_feature_index": 4,
+          "split_index": 1,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.1818920224905014,
+          "float_feature_index": 11,
+          "split_index": 5,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.55636072158813477,
+          "float_feature_index": 12,
+          "split_index": 6,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": -3.5462615489959717,
+          "float_feature_index": 23,
+          "split_index": 11,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 28.472099304199219,
+          "float_feature_index": 22,
+          "split_index": 10,
+          "split_type": "FloatFeature"
+        }
+      ]
+    },
+    {
+      "leaf_values": [
+        -0.32206836342811584,
+        0,
+        -0.27402737736701965,
+        0,
+        0,
+        0,
+        -0.15817280113697052,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.084540136158466339,
+        0,
+        -0.36270102858543396,
+        0,
+        0,
+        0,
+        0.15593205392360687,
+        0,
+        -0.35495230555534363,
+        0.21301797032356262,
+        -0.067800857126712799,
+        -0.25760835409164429,
+        0,
+        0,
+        0,
+        0,
+        -0.21356108784675598,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.24138900637626648,
+        0,
+        -0.14630141854286194,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.23597821593284607,
+        -0.12919127941131592,
+        -0.084237173199653625,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "leaf_weights": [
+        37,
+        0,
+        24,
+        0,
+        0,
+        0,
+        4,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        235.57142639160156,
+        0,
+        56,
+        0,
+        0,
+        0,
+        33.095237731933594,
+        0,
+        38,
+        95.285713195800781,
+        58.047618865966797,
+        12,
+        0,
+        0,
+        0,
+        0,
+        10,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        11,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        11,
+        3,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "splits": [
+        {
+          "border": 0.63241195678710938,
+          "float_feature_index": 0,
+          "split_index": 0,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 24.194007873535156,
+          "float_feature_index": 21,
+          "split_index": 8,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 28.396354675292969,
+          "float_feature_index": 21,
+          "split_index": 9,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.54127812385559082,
+          "float_feature_index": 8,
+          "split_index": 3,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.1818920224905014,
+          "float_feature_index": 11,
+          "split_index": 5,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 1023.203369140625,
+          "float_feature_index": 15,
+          "split_index": 7,
+          "split_type": "FloatFeature"
+        }
+      ]
+    }
+  ],
+  "scale_and_bias": [
+    1,
+    [
+      0
+    ]
+  ]
+}
