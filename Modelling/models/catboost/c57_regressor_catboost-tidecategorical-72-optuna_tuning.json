@@ -1,0 +1,1154 @@
+{
+  "features_info": {
+    "float_features": [
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_tide_stage",
+        "feature_index": 0,
+        "flat_feature_index": 0,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_total_1_day_delay",
+        "feature_index": 1,
+        "flat_feature_index": 1,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.82741880416870117
+        ],
+        "feature_id": "RadioIsland_nexrad_total_2_day_delay",
+        "feature_index": 2,
+        "flat_feature_index": 2,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.52250492572784424
+        ],
+        "feature_id": "RadioIsland_nexrad_total_3_day_delay",
+        "feature_index": 3,
+        "flat_feature_index": 3,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_dry_days_count",
+        "feature_index": 4,
+        "flat_feature_index": 4,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_rainfall_intensity",
+        "feature_index": 5,
+        "flat_feature_index": 5,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_24",
+        "feature_index": 6,
+        "flat_feature_index": 6,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          0.013759644702076912
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_48",
+        "feature_index": 7,
+        "flat_feature_index": 7,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          4.0928745269775391
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_72",
+        "feature_index": 8,
+        "flat_feature_index": 8,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_96",
+        "feature_index": 9,
+        "flat_feature_index": 9,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_120",
+        "feature_index": 10,
+        "flat_feature_index": 10,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_144",
+        "feature_index": 11,
+        "flat_feature_index": 11,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          2.4412693977355957
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_168",
+        "feature_index": 12,
+        "flat_feature_index": 12,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+          2.5704827308654785
+        ],
+        "feature_id": "RadioIsland_nexrad_summary_192",
+        "feature_index": 13,
+        "flat_feature_index": 13,
+        "has_nans": false,
+        "nan_value_treatment": "AsIs"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_v_24",
+        "feature_index": 14,
+        "flat_feature_index": 14,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_u_24",
+        "feature_index": 15,
+        "flat_feature_index": 15,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_pressure_24",
+        "feature_index": 16,
+        "flat_feature_index": 16,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_temperature_24",
+        "feature_index": 17,
+        "flat_feature_index": 17,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_water_temperature_24",
+        "feature_index": 18,
+        "flat_feature_index": 18,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_v_48",
+        "feature_index": 19,
+        "flat_feature_index": 19,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          3.7217648029327393
+        ],
+        "feature_id": "8656483_wind_u_48",
+        "feature_index": 20,
+        "flat_feature_index": 20,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_pressure_48",
+        "feature_index": 21,
+        "flat_feature_index": 21,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_temperature_48",
+        "feature_index": 22,
+        "flat_feature_index": 22,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_water_temperature_48",
+        "feature_index": 23,
+        "flat_feature_index": 23,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_wind_v_72",
+        "feature_index": 24,
+        "flat_feature_index": 24,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+          -0.98567605018615723
+        ],
+        "feature_id": "8656483_wind_u_72",
+        "feature_index": 25,
+        "flat_feature_index": 25,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_pressure_72",
+        "feature_index": 26,
+        "flat_feature_index": 26,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_air_temperature_72",
+        "feature_index": 27,
+        "flat_feature_index": 27,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      },
+      {
+        "borders": [
+        ],
+        "feature_id": "8656483_water_temperature_72",
+        "feature_index": 28,
+        "flat_feature_index": 28,
+        "has_nans": true,
+        "nan_value_treatment": "AsFalse"
+      }
+    ]
+  },
+  "model_info": {
+    "catboost_version_info": "Git info:\n    Commit: d63ba37ba1c5b0a3082a19c673c11a93b77cb8c2\n    Branch: heads/master\n    Author: somov <somov@yandex-team.ru>\n    Summary: Correct debug trap for M1\n    git-svn info:\n    Last Changed Rev: 9293085\n\nOther info:\n    Build by: zomb-ml-platform-oss\n    Top src dir: C:\\Program Files (x86)\\Go Agent\\pipelines\\BuildMaster\\catboost.git\n    Top build dir: C:\\Users\\zomb-ml-platform-msk\\.ya\\build\n    Hostname: platform-w10\n    Host information: \n        Microsoft Windows [Version 10.0.19044.2130]\n\n    ",
+    "model_guid": "8a7870e9-5670d811-ae862f0d-f149890",
+    "output_options": "{\"name\":\"experiment\",\"verbose\":0,\"test_error_log\":\"test_error.tsv\",\"json_log\":\"catboost_training.json\",\"result_model_file\":\"model\",\"roc_file\":\"\",\"eval_file_name\":\"\",\"use_best_model\":true,\"allow_writing_files\":true,\"prediction_type\":[\"RawFormulaVal\"],\"fstr_internal_file\":\"\",\"output_columns\":[\"SampleId\",\"RawFormulaVal\",\"Label\"],\"snapshot_interval\":600,\"time_left_log\":\"time_left.tsv\",\"fstr_type\":\"FeatureImportance\",\"profile_log\":\"catboost_profile.log\",\"train_dir\":\"catboost_info\",\"learn_error_log\":\"learn_error.tsv\",\"training_options_file\":\"\",\"snapshot_file\":\"experiment.cbsnapshot\",\"save_snapshot\":false,\"model_format\":[\"CatboostBinary\"],\"final_feature_calcer_computation_mode\":\"Default\",\"metric_period\":1,\"output_borders\":\"\",\"final_ctr_computation_mode\":\"Default\",\"best_model_min_trees\":1,\"fstr_regular_file\":\"\"}",
+    "params": {
+      "boosting_options": {
+        "approx_on_full_history": false,
+        "boost_from_average": true,
+        "boosting_type": "Plain",
+        "fold_len_multiplier": 2,
+        "fold_permutation_block": 0,
+        "iterations": 597,
+        "learning_rate": 0.099516518414020538,
+        "model_shrink_mode": "Constant",
+        "model_shrink_rate": 0,
+        "od_config": {
+          "stop_pvalue": 0,
+          "type": "None",
+          "wait_iterations": 20
+        },
+        "permutation_count": 4,
+        "posterior_sampling": false
+      },
+      "cat_feature_params": {
+        "combinations_ctrs": [
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Borders",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ],
+              [
+                0.5,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "target_binarization": {
+              "border_count": 1,
+              "border_type": "MinEntropy"
+            }
+          },
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Counter",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "counter_calc_method": "SkipTest",
+        "ctr_leaf_count_limit": 18446744073709551615,
+        "max_ctr_complexity": 4,
+        "one_hot_max_size": 2,
+        "per_feature_ctrs": {
+        },
+        "simple_ctrs": [
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Borders",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ],
+              [
+                0.5,
+                1
+              ],
+              [
+                1,
+                1
+              ]
+            ],
+            "target_binarization": {
+              "border_count": 1,
+              "border_type": "MinEntropy"
+            }
+          },
+          {
+            "ctr_binarization": {
+              "border_count": 15,
+              "border_type": "Uniform"
+            },
+            "ctr_type": "Counter",
+            "prior_estimation": "No",
+            "priors": [
+              [
+                0,
+                1
+              ]
+            ]
+          }
+        ],
+        "store_all_simple_ctr": false,
+        "target_binarization": {
+          "border_count": 1,
+          "border_type": "MinEntropy"
+        }
+      },
+      "data_processing_options": {
+        "allow_const_label": false,
+        "auto_class_weights": "None",
+        "class_names": [
+        ],
+        "class_weights": [
+        ],
+        "classes_count": 0,
+        "dev_default_value_fraction_for_sparse": 0.82999998331069946,
+        "dev_group_features": false,
+        "dev_leafwise_scoring": false,
+        "dev_sparse_array_indexing": "Indices",
+        "embedding_processing_options": {
+          "embedding_processing": {
+            "default": [
+              "LDA",
+              "KNN"
+            ]
+          }
+        },
+        "eval_fraction": 0,
+        "float_features_binarization": {
+          "border_count": 254,
+          "border_type": "GreedyLogSum",
+          "dev_max_subset_size_for_build_borders": 200000,
+          "nan_mode": "Min"
+        },
+        "force_unit_auto_pair_weights": false,
+        "has_time": false,
+        "ignored_features": [
+        ],
+        "per_float_feature_quantization": {
+        },
+        "target_border": null,
+        "text_processing_options": {
+          "dictionaries": [
+            {
+              "dictionary_id": "BiGram",
+              "end_of_sentence_token_policy": "Skip",
+              "end_of_word_token_policy": "Insert",
+              "gram_order": "2",
+              "max_dictionary_size": "50000",
+              "occurrence_lower_bound": "1",
+              "skip_step": "0",
+              "start_token_id": "0",
+              "token_level_type": "Word"
+            },
+            {
+              "dictionary_id": "Word",
+              "end_of_sentence_token_policy": "Skip",
+              "end_of_word_token_policy": "Insert",
+              "gram_order": "1",
+              "max_dictionary_size": "50000",
+              "occurrence_lower_bound": "1",
+              "skip_step": "0",
+              "start_token_id": "0",
+              "token_level_type": "Word"
+            }
+          ],
+          "feature_processing": {
+            "default": [
+              {
+                "dictionaries_names": [
+                  "BiGram",
+                  "Word"
+                ],
+                "feature_calcers": [
+                  "BoW"
+                ],
+                "tokenizers_names": [
+                  "Space"
+                ]
+              }
+            ]
+          },
+          "tokenizers": [
+            {
+              "delimiter": " ",
+              "languages": [
+              ],
+              "lemmatizing": "0",
+              "lowercasing": "0",
+              "number_process_policy": "LeaveAsIs",
+              "number_token": "🔢",
+              "separator_type": "ByDelimiter",
+              "skip_empty": "1",
+              "split_by_set": "0",
+              "subtokens_policy": "SingleToken",
+              "token_types": [
+                "Number",
+                "Unknown",
+                "Word"
+              ],
+              "tokenizer_id": "Space"
+            }
+          ]
+        }
+      },
+      "detailed_profile": false,
+      "flat_params": {
+        "bagging_temperature": 0.28525035027262796,
+        "bootstrap_type": "Bayesian",
+        "depth": 10,
+        "iterations": 597,
+        "l2_leaf_reg": 1.3370494513004241,
+        "learning_rate": 0.099516516311330003,
+        "loss_function": "RMSE",
+        "random_strength": 0.11853667556051628,
+        "verbose": 0
+      },
+      "logging_level": "Silent",
+      "loss_function": {
+        "params": {
+        },
+        "type": "RMSE"
+      },
+      "metadata": {
+      },
+      "metrics": {
+        "custom_metrics": [
+        ],
+        "eval_metric": {
+          "params": {
+          },
+          "type": "RMSE"
+        },
+        "objective_metric": {
+          "params": {
+          },
+          "type": "RMSE"
+        }
+      },
+      "pool_metainfo_options": {
+        "tags": {
+        }
+      },
+      "random_seed": 0,
+      "system_options": {
+        "file_with_hosts": "hosts.txt",
+        "node_port": 0,
+        "node_type": "SingleHost",
+        "thread_count": 6,
+        "used_ram_limit": ""
+      },
+      "task_type": "CPU",
+      "tree_learner_options": {
+        "bayesian_matrix_reg": 0.10000000149011612,
+        "bootstrap": {
+          "bagging_temperature": 0.28525033593177795,
+          "type": "Bayesian"
+        },
+        "depth": 10,
+        "dev_efb_max_buckets": 1024,
+        "dev_leafwise_approxes": false,
+        "dev_score_calc_obj_block_size": 5000000,
+        "grow_policy": "SymmetricTree",
+        "l2_leaf_reg": 1.3370494842529297,
+        "leaf_estimation_backtracking": "AnyImprovement",
+        "leaf_estimation_iterations": 1,
+        "leaf_estimation_method": "Newton",
+        "max_leaves": 1024,
+        "min_data_in_leaf": 1,
+        "model_size_reg": 0.5,
+        "monotone_constraints": {
+        },
+        "penalties": {
+          "feature_weights": {
+          },
+          "first_feature_use_penalties": {
+          },
+          "penalties_coefficient": 1,
+          "per_object_feature_penalties": {
+          }
+        },
+        "random_strength": 0.11853667348623276,
+        "rsm": 1,
+        "sampling_frequency": "PerTree",
+        "score_function": "Cosine",
+        "sparse_features_conflict_fraction": 0
+      }
+    },
+    "train_finish_time": "2023-03-22T16:09:53Z"
+  },
+  "oblivious_trees": [
+    {
+      "leaf_values": [
+        -3.9115351250534158,
+        0,
+        -1.0696033903473861,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        74.218359477202767,
+        0,
+        -1.9440189599132223,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.8290472476978612,
+        0,
+        -3.9232680657249595,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1.1744424322036924,
+        -1.9993757222715731,
+        -2.829873535184376,
+        64.935457612935451,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.3180618239767248,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -0.071775551238479784,
+        0,
+        -2.5618882471342688,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -3.1403501118852142,
+        0,
+        -2.5518533944051267,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -3.0531565946069597,
+        0,
+        -2.2974505527755698,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.12973020989982825,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.8392301458981266,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -3.8607055527998093,
+        0,
+        45.117738556681545,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.2548684341321414,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.1860572399383087,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.7199433101665917,
+        0,
+        -1.4033627066443468,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.552941757206562,
+        0,
+        -2.4588636338898495,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.0845399595584291,
+        0,
+        -2.2548684341321414,
+        0,
+        -1.4883902985504369,
+        0,
+        -2.1697041968452857,
+        0,
+        -3.0416837363206932,
+        0,
+        -2.7199433101665917,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -2.1264912853380875,
+        0,
+        0,
+        0,
+        5.9805130516062128,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1.9440189599132223,
+        0,
+        -2.2636711578054318,
+        0,
+        0,
+        0,
+        83.079697327297623,
+        0
+      ],
+      "leaf_weights": [
+        49,
+        0,
+        50,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        7,
+        0,
+        0,
+        0,
+        0,
+        0,
+        86,
+        1,
+        71,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        17,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        1,
+        0,
+        3,
+        0,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      "splits": [
+        {
+          "border": 3.7217648029327393,
+          "float_feature_index": 20,
+          "split_index": 6,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.013759644702076912,
+          "float_feature_index": 7,
+          "split_index": 2,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 4.0928745269775391,
+          "float_feature_index": 8,
+          "split_index": 3,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 2.4412693977355957,
+          "float_feature_index": 12,
+          "split_index": 4,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 2.5704827308654785,
+          "float_feature_index": 13,
+          "split_index": 5,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": -0.98567605018615723,
+          "float_feature_index": 25,
+          "split_index": 7,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.52250492572784424,
+          "float_feature_index": 3,
+          "split_index": 1,
+          "split_type": "FloatFeature"
+        },
+        {
+          "border": 0.82741880416870117,
+          "float_feature_index": 2,
+          "split_index": 0,
+          "split_type": "FloatFeature"
+        }
+      ]
+    }
+  ],
+  "scale_and_bias": [
+    1,
+    [
+      54.953411102294922
+    ]
+  ]
+}
