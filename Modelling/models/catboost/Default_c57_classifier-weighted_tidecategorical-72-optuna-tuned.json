@@ -288,7 +288,7 @@
       ],
       "classes_count": 0
     },
-    "model_guid": "4f5f0201-539cbb71-40988404-2d7d44f0",
+    "model_guid": "8a6b755-2e89fa50-9dd2df48-b08b0690",
     "output_options": "{\"name\":\"experiment\",\"verbose\":0,\"test_error_log\":\"test_error.tsv\",\"json_log\":\"catboost_training.json\",\"result_model_file\":\"model\",\"roc_file\":\"\",\"eval_file_name\":\"\",\"use_best_model\":true,\"allow_writing_files\":true,\"prediction_type\":[\"RawFormulaVal\"],\"fstr_internal_file\":\"\",\"output_columns\":[\"SampleId\",\"RawFormulaVal\",\"Label\"],\"snapshot_interval\":600,\"time_left_log\":\"time_left.tsv\",\"fstr_type\":\"FeatureImportance\",\"profile_log\":\"catboost_profile.log\",\"train_dir\":\"catboost_info\",\"learn_error_log\":\"learn_error.tsv\",\"training_options_file\":\"\",\"snapshot_file\":\"experiment.cbsnapshot\",\"save_snapshot\":false,\"model_format\":[\"CatboostBinary\"],\"final_feature_calcer_computation_mode\":\"Default\",\"metric_period\":1,\"output_borders\":\"\",\"final_ctr_computation_mode\":\"Default\",\"best_model_min_trees\":1,\"fstr_regular_file\":\"\"}",
     "params": {
       "boosting_options": {
@@ -609,7 +609,7 @@
         "score_function": "Cosine"
       }
     },
-    "train_finish_time": "2023-03-22T13:10:30Z"
+    "train_finish_time": "2023-03-24T14:30:16Z"
   },
   "oblivious_trees": [
     {
